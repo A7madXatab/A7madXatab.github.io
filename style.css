@@ -1,0 +1,122 @@
+*{
+ font-family: Poppins;
+}
+thead :nth-child(1){
+        color: white;
+}
+thead :not(:first-child)
+{
+        color: black;
+}
+h4{
+        pointer-events: none;
+}
+.myBtn{
+        text-decoration: none;
+        color: white;
+        transition: 0.8s ease-in-out ;
+}
+.myBtn.active{
+        background-color: #fff;
+        color: #000;
+}
+.myBtn.myBtn.active:hover{
+        background-color: #292d3e;
+        color: black;
+}
+.delBtn{
+        background-color: darkred;
+        color: white;
+}
+.editBtn{
+        background-color: yellow;
+        color: black;
+        background: none;
+}
+.custom{
+        background: linear-gradient(to right,#292d3e,#ccccb3)
+}
+div.myNav{
+        
+        background-image: url("https://unsplash.com/photos/XQKd1UN7gUU") no-repeat cover;
+        background:linear-gradient(to left,#292d3e,#ccccb3)
+}
+nav.myNav{
+        background:#292d3e
+}
+.myNav:hover .myBtn:hover{
+        color: rgb(43, 42, 42);
+        animation: test1 300ms ease-in-out 200ms 1 normal forwards;
+}
+.myNav:hover .myBtn:not(:hover){
+        animation: test 300ms ease-in-out 100ms 1 normal forwards;
+}
+@keyframes test{
+        100%{
+                opacity: 0;
+        }
+}
+@keyframes test1{
+        50%{
+                border-color: white;
+        }
+        100%{
+                border-color: white;
+                color: white;
+                text-decoration: underline;
+                text-decoration-color: white;
+        }
+}
+#new-post{
+        background:linear-gradient(#292d3e,#ccccb3);
+        color: white;
+}
+#new-post:hover{
+        background:linear-gradient(to top,#292d3e,#ccccb3);
+        color: black;
+}
+#post-form{
+        margin: 0 auto;
+        display: none;
+}
+form >input,form>textarea{
+       margin-top: 10px; 
+       box-shadow: none;
+       border-radius: 8px;
+}
+
+#clear{
+        background-color: 
+        #52597a;
+}
+#new-post:focus,.form-control:focus{
+        outline:none;
+        box-shadow: none;
+}
+@media screen and (max-width:700px)
+{
+        #postButton{
+                margin-left:100px;
+        }
+}
+@media screen and (max-width:500px)
+{
+        #postButton{
+                margin-left:50px;
+        }
+        body{
+                border: 5px solid #ccccb3;
+                border-bottom: none;
+        }
+}
+
+ul.list-group-flush{
+        list-style: none;
+     border: 2px solid #ccccb3
+}
+.commentsColor{
+        background-color: #6b6b47;
+}
+.hidden{
+        display: none;
+}
