@@ -29,9 +29,16 @@ h4{
         color: white;
 }
 .editBtn{
-        background-color: yellow;
+        background-color:#52597a;
+        color: white;
+        transition: all 0.6s ease;
+}
+.editBtn:hover{
+        background-color: white;
         color: black;
-        background: none;
+}
+tbody :nth-child(4):not(){
+        opacity: 0;
 }
 .custom{
         background: linear-gradient(to right,#292d3e,#ccccb3)

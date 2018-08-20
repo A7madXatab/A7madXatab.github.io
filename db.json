@@ -2,16 +2,41 @@
   "posts": [
     {
       "id": 1,
-      "title": "lorem",
+      "title": "kjdbosf",
       "body": "lorem ipsum",
       "userId": 1
+    },
+    {
+      "title": "test 2",
+      "body": "sajdbsa[odci",
+      "owner": "AhmadGhost",
+      "userId": 2,
+      "id": 2
+    },
+    {
+      "title": "AJLSNAo",
+      "body": "oiinsfpiosafn",
+      "owner": "AhmadGhost22",
+      "userId": 3,
+      "id": 3
     }
   ],
   "comments": [
     {
       "id": 1,
       "body": "some comment",
-      "postId": 1
+      "title":"Some title",
+      "postId": 1,
+      "owner":"typicode",
+      "userId": 1
+    },
+    {
+      "body": "this a test object",
+      "title": "test 1",
+      "owner":"AhmadGhost22",
+      "postId": "1",
+      "userId": 2,
+      "id": 2
     }
   ],
   "users": [
@@ -22,16 +47,26 @@
       "userName": "undefined"
     },
     {
-      "name": "Omer",
-      "email": "kjsdf",
-      "userName": "II_Omer",
+      "name": "AhmadXatab",
+      "email": "ahmadzendane725@gmail.com",
+      "userName": "AhmadGhost111",
       "id": 2
+    },
+    {
+      "name": "AhmadXatab",
+      "email": "ahmadzendane725@gmail.com",
+      "userName": "AhmadGhost22",
+      "id": 3
     }
   ],
   "categories": [
     {
       "id": 1,
       "name": "Uncatagorized"
+    },
+    {
+      "name": "test",
+      "id": 2
     }
   ]
 }

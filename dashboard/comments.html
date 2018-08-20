@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 </head>
@@ -28,11 +29,12 @@
              <button type="button" class="btn  my-1" id="new-post">New Comment</button>
        </div>
        <div class="row">
-       <div class="col-lg-10" style="margin: 0 auto" id="post-form">
+       <div class="col-lg-10 comments-form" style="margin: 0 auto" id="post-form">
        <form class="form-group col-lg-6 py-1 col-md-6">
-            <input type="text" placeholder="Title" class="form-control" id="title">
-            <input type="text" placeholder="UserName" class="form-control" id="owner-of-post">
-            <textarea id="body" class="form-control" style="resize: none"></textarea>
+            <input type="text" placeholder="Title" class="form-control commentTitle" id="title">
+            <input type="text" placeholder="Post ID" class="form-control postId" id="title">
+            <input type="text" placeholder="UserName" class="form-control" id="owner-of-comment">
+            <textarea id="body commentBody" class="form-control" style="resize: none"></textarea>
             <button type="button" class="btn btn-info mt-2 mr-1" id="postComment">Post</button>
             <button type="button" class="btn btn-warning mt-2 mr-1" id="cancelButton">Cancel</button>
             <button type="reset" class="btn btn-reset mt-2" id="clear">Clear</button>
@@ -41,7 +43,7 @@
     </div>
        <table class="table commentsTable">
                    <thead class="custom">
-                           <th>User Id</th>
+                           <th>comment Id</th>
                            <th>Comment Body</th>
                            <th>Actions</th>
                    </thead>
