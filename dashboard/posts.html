@@ -28,9 +28,10 @@
              <button type="button" class="btn  my-1" id="new-post">New Post</button>
        </div>
        <div class="row">
-       <div class="col-lg-10 posts-form" style="margin: 0 auto" id="post-form" >
-       <form class="form-group col-lg-6 py-1 col-md-6">
+       <div class="col-lg-4 posts-form" id="post-form" >
+       <form class="form-group col-lg-12 py-1 col-md-6">
             <input type="text" placeholder="Title" class="form-control" id="title">
+            <span> Please Notice that if the user dosent excist the post will not be posted</span>
             <input type="text" placeholder="UserName" class="form-control" id="owner-of-post">
             <textarea id="body" class="form-control" style="resize: none"></textarea>
             <button type="button" class="btn btn-info mt-2 mr-1" id="postButton">Post</button>
@@ -38,8 +39,21 @@
             <button type="reset" class="btn btn-reset mt-2" id="clear">Clear</button>
         </form>
         </div>
+        <div class="col-lg-3 mr-1 mb-1 xx">
+           <form action="" id="cc" class="card">
+               <div class="card-header">
+                <h3 class="text-center">Catigories</h3>
+                </div>
+           </form>
+        </div>
+        <div class="col-lg-3 mr-1 mb-1 xx" id="usersList">
+                    <div class="card-header">
+                     <h3 class="text-center">Current Users</h3>
+                     </div> 
+             </div>
+        </div>
     </div>
-       <table class="table postsTable">
+       <table class="table postsTable col-sm-12">
                    <thead class="custom">
                            <th>Id</th>
                            <th>Title</th>

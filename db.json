@@ -4,36 +4,39 @@
       "id": 1,
       "title": "kjdbosf",
       "body": "lorem ipsum",
-      "userId": 1
+      "userId": 1,
+      "category": "Uncatagorized"
     },
     {
       "title": "test 2",
       "body": "sajdbsa[odci",
       "owner": "AhmadGhost",
       "userId": 2,
-      "id": 2
+      "id": 2,
+      "category": "test"
     },
     {
       "title": "AJLSNAo",
       "body": "oiinsfpiosafn",
       "owner": "AhmadGhost22",
       "userId": 3,
-      "id": 3
+      "id": 3,
+      "category": "test"
     }
   ],
   "comments": [
     {
       "id": 1,
       "body": "some comment",
-      "title":"Some title",
+      "title": "Some title",
       "postId": 1,
-      "owner":"typicode",
+      "owner": "typicode",
       "userId": 1
     },
     {
       "body": "this a test object",
       "title": "test 1",
-      "owner":"AhmadGhost22",
+      "owner": "AhmadGhost22",
       "postId": "1",
       "userId": 2,
       "id": 2
@@ -67,6 +70,10 @@
     {
       "name": "test",
       "id": 2
+    },
+    {
+      "name": "test2",
+      "id": 3
     }
   ]
 }

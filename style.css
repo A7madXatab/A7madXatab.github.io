@@ -86,6 +86,39 @@ nav.myNav{
         margin: 0 auto;
         display: none;
 }
+#cc{
+        margin:  0 auto;
+        display: none;
+}
+div.card{
+        box-shadow: 0 3px 8px #000;
+}
+
+div.card-header{
+        color:white;
+        background:linear-gradient(-45deg,#292d3e,#ccccb3)
+}
+.xx:hover .card-header{
+          background: linear-gradient(45deg,#292d3e,#ccccb3)
+}
+.border-bottom{
+        border-right: 9px solid #292d3e;
+        border-left: 9px solid #fff;
+        box-shadow: 0 4px 6px #ccccb3;
+}
+span{
+display: none;
+}
+#usersList{
+        display: none;
+}
+ul.ul{
+        list-style: none;
+}
+.xx:hover .border-bottom{
+        border-right-color: #fff;
+        border-left: 9px solid #292d3e;
+}
 form >input,form>textarea{
        margin-top: 10px; 
        box-shadow: none;
@@ -114,6 +147,9 @@ form >input,form>textarea{
         body{
                 border: 5px solid #ccccb3;
                 border-bottom: none;
+        }
+        *{
+                font-size: 10px;
         }
 }
 
