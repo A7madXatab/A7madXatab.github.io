@@ -42,8 +42,8 @@ let x = new Updater();
                                         .attr("name","category")
                                         .attr("id","materialChecked2")
                                         .val(element.name)
-                                        .addClass("col-lg-3 col-sm-1")
-                              let label  = $("<label>").html(element.name).addClass("col-lg-8 col-sm-4");
+                                        .addClass("col-lg-3 col-sm-1 col-md-3")
+                              let label  = $("<label>").html(element.name).addClass("col-lg-8 col-sm-4 col-md-7");
                               let div = $("<div>").addClass("border-bottom");
                               div.append([a,label]);
                               cc.append(div);
@@ -166,7 +166,7 @@ function add__Delete__Edit(method,dir,obj)
 }
 function deleteButton(td,directory,obj)
 {
-        let delBtn =  $("<button>").addClass("btn delBtn mx-1 fas fa-trash-alt").html("  Delete");
+        let delBtn =  $("<button>").addClass("btn delBtn mx-1 my-1 fas fa-trash-alt").html("  Delete");
         delBtn.on("click",()=>{
                 add__Delete__Edit("DELETE",directory,obj)
         })

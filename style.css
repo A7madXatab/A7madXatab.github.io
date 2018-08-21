@@ -104,7 +104,7 @@ div.card-header{
 .border-bottom{
         border-right: 9px solid #292d3e;
         border-left: 9px solid #fff;
-        box-shadow: 0 4px 6px #ccccb3;
+        /* box-shadow: 0 4px 1px #ccccb3; */
 }
 span{
 display: none;
@@ -149,7 +149,7 @@ form >input,form>textarea{
                 border-bottom: none;
         }
         *{
-                font-size: 10px;
+                font-size: 15px;
         }
 }
 
