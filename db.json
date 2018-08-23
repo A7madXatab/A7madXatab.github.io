@@ -2,44 +2,31 @@
   "posts": [
     {
       "id": 1,
-      "title": "kjdbosf",
+      "title": "test1",
       "body": "lorem ipsum",
       "userId": 1,
+      "owner": "typicode",
       "category": "Uncatagorized"
     },
     {
-      "title": "test 2",
+      "title": "test 9",
       "body": "sajdbsa[odci",
       "owner": "AhmadGhost",
       "userId": 2,
       "id": 2,
-      "category": "test"
-    },
-    {
-      "title": "AJLSNAo",
-      "body": "oiinsfpiosafn",
-      "owner": "AhmadGhost22",
-      "userId": 3,
-      "id": 3,
-      "category": "test"
+      "category": "test",
+      "name": "test 4",
+      "email": "AhmadGhost"
     }
   ],
   "comments": [
     {
       "id": 1,
-      "body": "some comment",
+      "body": "some commentttt",
       "title": "Some title",
-      "postId": 1,
+      "postId": "1",
       "owner": "typicode",
       "userId": 1
-    },
-    {
-      "body": "this a test object",
-      "title": "test 1",
-      "owner": "AhmadGhost22",
-      "postId": "1",
-      "userId": 2,
-      "id": 2
     }
   ],
   "users": [
@@ -52,13 +39,13 @@
     {
       "name": "AhmadXatab",
       "email": "ahmadzendane725@gmail.com",
-      "userName": "AhmadGhost111",
+      "userName": "AhmadGhost1111",
       "id": 2
     },
     {
-      "name": "AhmadXatab",
-      "email": "ahmadzendane725@gmail.com",
-      "userName": "AhmadGhost22",
+      "name": "Ciri",
+      "email": "ahmadkhatab017@mail.com",
+      "userName": "Geralt",
       "id": 3
     }
   ],
@@ -68,11 +55,7 @@
       "name": "Uncatagorized"
     },
     {
-      "name": "test",
-      "id": 2
-    },
-    {
-      "name": "test2",
+      "name": "saazs",
       "id": 3
     }
   ]

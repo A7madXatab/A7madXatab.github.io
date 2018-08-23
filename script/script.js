@@ -3,32 +3,42 @@ addElements();
 class Updater{
         changeUserData(user,cols)
         {
+                console.log("asdkjjgsa")
             user.name = cols[0].value;
             user.email = cols[1].value;
             user.userName = cols[2].value;
-            add__Delete__Edit("PUT","/users",user);
+            this.sendUpdatedData(user,"/users")
         }
         changePostData(post,cols)
         {
                 post.title = cols[0].value;
                 post.body = $("textarea").val();
-                console.log(post);
-                add__Delete__Edit("PUT","/posts",post);
+                this.sendUpdatedData(post,"/posts")
         }
         changeCommentData(comment,col)
         {
               comment.title = col[0].value;
               comment.postId = col[1].value;
               comment.body =$("textarea").val();
-               add__Delete__Edit("PUT","/comments",comment)
+              this.sendUpdatedData(comment,"/comments")
+        }
+        changeCatigoreyData(categorie,cols)
+        {
+                categorie.name = cols[0].value;
+                this.sendUpdatedData(categorie,"/categories")
+        }
+        sendUpdatedData(obj,dir)
+        {
+              databaseConnector("PUT",dir,obj)
         }
 }
 
-let x = new Updater();
+let updaterObject = new Updater();
         $("#new-post").on("click",()=>{
               $("#post-form").toggle();
               $("#cc").toggle();
-              $("#usersList").toggle();;
+              $("#usersList").toggle();
+              $("#postsList").toggle();
             })
         function addElements()
         {
@@ -57,6 +67,7 @@ let x = new Updater();
                                   xx.append($("<div>").html(user.userName).addClass("border-bottom col-lg-12 py-1"));
                           })
                   })
+                   
         }
 
         $("#clearButton").on("click",()=>{
@@ -70,44 +81,32 @@ let x = new Updater();
         })
 $("#cc:has(input:checked)").css({background:"red"})
 $("#createUser").on("click",()=>{
-         let name = $("#name").val();
-         let userEmail = $("#email").val(); 
-         let userName = $("#userName").val();
-         console.log(userName)
          let obj = {
-                 name:name,
-                 email:userEmail,
-                 userName:userName
+                 name:$("#name").val(),
+                 email:$("#email").val(),
+                 userName:$("#userName").val()
          }
-        add__Delete__Edit("POST","/users",obj)    
+        databaseConnector("POST","/users",obj)    
 })
 
 $("#postButton").on("click",()=>{
-        
-        let category = $("#cc input:checked").val();
-        let postTitle = $("#title").val();
         let ownerOfPost = $("#owner-of-post").val();
-        let postBody =$("textarea").val();
-        let userId;
         let postObj = {
-                title:postTitle,
-                body:postBody,
+                title:$("#title").val(),
+                body:$("textarea").val(),
                 owner:ownerOfPost,
-                userId:userId,
-                category:category
+                userId:"",
+                category:$("#cc input:checked").val()
         }
-        findUserId("/posts",postObj,ownerOfPost)      
+         findUserId("/posts",postObj,ownerOfPost)      
 })
 $("#postComment").on("click",()=>{
           let commentOwner = $("#owner-of-comment").val();
-          let commentBody = $("textarea").val();
-          let commentTitle = $(".commentTitle").val();
-          let postid = $(".postId").val();
           let commentObj = {
-               body:commentBody,
+               body:$("textarea").val(),
                owner:commentOwner,
-               title:commentTitle,
-               postId:postid,
+               title: $(".commentTitle").val(),
+               postId: $(".postId").val(),
                userId:""
           }
           findUserId("/comments",commentObj,commentOwner);
@@ -117,38 +116,29 @@ function findUserId(dir,obj,owner)
         let xhr = new XMLHttpRequest();
         xhr.addEventListener("load",()=>{
                let users = JSON.parse(xhr.responseText);
-               if(dir ==="/posts")
-               {
-                       console.log("asdlljbgas")
                users.forEach(element => {
                        if(element.userName=== owner)
                        {
-                        obj.userId=element.id;
-                        console.log(obj)
-                        add__Delete__Edit("POST","/posts",obj)
-                        break;
+                               if(obj.hasOwnProperty("postId"))
+                               {
+                                  obj.userId=element.id;
+                                 databaseConnector("POST","/comments",obj)
+                               }
+                               else{
+                                       obj.userId=element.id
+                                      databaseConnector("POST","/posts",obj)
+                               }
                 }
-               })};
-               if(dir === "/comments")
-               {
-                users.forEach(element => {
-                        if(element.userName=== owner)
-                        {
-                              obj.userId=element.id
-                          add__Delete__Edit("POST","/comments",obj)
-                          break;
-                 }
-                })
-               }
+               });
         })
         xhr.open("GET",rootUrl+"/users");
         xhr.send();
 }
 $("#postCatigorey").on("click",()=>{
         let categorieName = $(".catigoreyTitle").val();
-        add__Delete__Edit("POST","/categories",{name:categorieName});
+        databaseConnector("POST","/categories",{name:categorieName});
 })
-function add__Delete__Edit(method,dir,obj)
+function databaseConnector(method,dir,obj)
 {
         let directory = rootUrl+dir;
         if(method === "POST")
@@ -164,16 +154,17 @@ function add__Delete__Edit(method,dir,obj)
                 axios.put(directory+"/"+obj.id,obj)
         }
 }
-function deleteButton(td,directory,obj)
+function addDeleteButtonToTable(td,directory,obj)
 {
         let delBtn =  $("<button>").addClass("btn delBtn mx-1 my-1 fas fa-trash-alt").html("  Delete");
         delBtn.on("click",()=>{
-                add__Delete__Edit("DELETE",directory,obj)
+                databaseConnector("DELETE",directory,obj)
         })
         td.append(delBtn);
 }
-function editButton(td,directory,obj)
+function addEditButtonToTable(td,directory,obj)
 {
+
         let editBtn = $("<button>").addClass("btn editBtn mx-1 far fa-edit").html(" Edit");
         let cols = $("#post-form input");
         editBtn.on("click",()=>{
@@ -199,114 +190,131 @@ function editButton(td,directory,obj)
                         cols[2].setAttribute("disabled","disabled")
                         $("textarea").val(obj.body)
                 }
+                if(directory === "/categories")
+                {
+                        cols[0].value = obj.name
+                }
                 $("#new-post").attr("disabled", "disabled")
                      editBtn.hide();
                      $("#post-form").show();
                      let saveButton = $("<button>").addClass("btn btn-success mt-2 far fa-save").html(" Save");
                      $(".form-group").append(saveButton);
                      saveButton.on("click",()=>{
-                         if(directory === "/users")
-                         {
-                                 x.changeUserData(obj,cols);
-                                 $(".form-control").val("");
-                                 saveButton.remove();
-                                 editBtn.show();
-                         }
-                         if(directory === "/posts")
-                         {
-                                 x.changePostData(obj,cols);
-                                 $(".form-control").val("");
-                                  $(".posts-form").show();
-                         }
-                         if(directory === "/comments")
-                         {
-                              x.changeCommentData(obj,cols)
-
-                         }
+                        callUpdater(directory,obj,cols)
                          $("#new-post").prop("disabled", false);
                          saveButton.remove();
                      })
                })
-               td.append(editBtn)
+               td.append(editBtn)        }
+function callUpdater(dir,obj,cols)
+{
+        switch(dir)
+        {
+        case "/posts": 
+                updaterObject.changePostData(obj,cols);
+        break
+        case "/users":
+                updaterObject.changeUserData(obj,cols);
+        break;
+        case "/comments":
+        break;
+                updaterObject.changeCommentData(obj,cols)
+        case "/categories":
+                updaterObject.changeCatigoreyData(obj,cols)
         }
+}
+function reloadPage(){
+        Window.loacation.reload();
+}
 function callRender()
 {
-        R("/users","usersTable");
-        R("/categories","CatigoryTable")
-        R("/comments","commentsTable")
-        R("/posts","postsTable")
+        getData("/users","usersTable");
+        getData("/categories","CatigoryTable")
+        getData("/comments","commentsTable")
+        getData("/posts","postsTable")
 }
-function R(dir,table)
+const render = {
+        "posts":(post,tablePlaceHolder)=>{
+                let tr = $("<tr>").append([
+                        $("<td>").html(post.id),
+                        $("<td>").html(post.title),
+                        $("<td>")
+                        .html(post.body.substring(0,20).concat("..."))])  
+                        let td = $("<td>");
+                        $("#postsList").append($("<p>").html(
+                                `<span>Post Title</span>: ${post.title} <br>
+                                 <span> Post Owner:</span> ${post.owner} <br>
+                                 <span> Post Id:</span> ${post.id}`
+                        ).addClass("border-bottom line"))
+                        addActionButtons(tr,td,"/posts",tablePlaceHolder,post)
+        },
+        "comments":(comment,tablePlaceHolder)=>{
+                let tr = $("<tr>").append([
+                        $("<td>").html(comment.postId),
+                        $("<td>").html(comment.body)])
+                        let td = $("<td>");
+                        addActionButtons(tr,td,"/comments",tablePlaceHolder,comment)
+        },
+        "users":(user,tablePlaceHolder)=>{
+                let tr = $("<tr>").append([
+                        $("<td>").html(user.id),
+                        $("<td>").html(user.name),
+                        $("<td>").html(user.userName)
+                   ]);
+                          
+                          let td = $("<td>");
+                          addActionButtons(tr,td,"/users",tablePlaceHolder,user)
+        },
+        "categories":(categorie,tablePlaceHolder)=>{
+                let tr = $("<tr>")
+                .append([
+                        $("<td>").html(categorie.id),
+                        $("<td>").html(categorie.name)
+                ])
+                let td = $("<td>");
+                addActionButtons(tr,td,"/categories",tablePlaceHolder,categorie)
+        }
+        
+}
+function getData(dir,table)
 {
         fetch(rootUrl+dir)
          .then(res=>res.json())
          .then(response=>{
                  let tablePlaceHolder = findTable(table);
-                 if(dir === "/users")
+                 switch(dir)
                  {
-                 response.forEach(user=>{
-                        let tr = $("<tr>").append([
-                       $("<td>").html(user.id),
-                       $("<td>").html(user.name),
-                       $("<td>").html(user.userName)
-                  ]);
-                         
-                         let td = $("<td>");
-                     editButton(td,dir,user);
-                     deleteButton(td,dir,user);
-                     tr.append(td);
-                     tablePlaceHolder.append(tr);
-                 })}
-                 if(dir ==="/categories")
-                 {
-                        response.forEach(categorie=>{
-                                let tr = $("<tr>")
-                                        .append([
-                                                $("<td>").html(categorie.id),
-                                                $("<td>").html(categorie.name)
-                                        ])
-                                        let td = $("<td>");
-                                        editButton(td,dir,categorie);
-                                        deleteButton(td,dir,categorie);
-                                        tr.append(td);
-                                        tablePlaceHolder.append(tr);
+                        case "/users":
+                                response.forEach(user=>{
+                                render.users(user,tablePlaceHolder)
                         })
-                 }
-                 if(dir === "/posts")
-                 {
-                        response.forEach(post=>{
-                          let tr = $("<tr>").append([
-                            $("<td>").html(post.id),
-                            $("<td>").html(post.title),
-                            $("<td>").html(post.body)])  
-                            let td = $("<td>");
-                            editButton(td,"/posts",post);
-                            deleteButton(td,"/posts",post)
-                            tr.append(td);
-                            tablePlaceHolder.append(tr);
+                        break;
+                        case "/posts": 
+                                response.forEach(post=>{
+                                render.posts(post,tablePlaceHolder)
                         })
-                 }
-                 if(dir === "/comments")
-                 {
-                        response.forEach(comment=>{
-                                let tr = $("<tr>").append([
-                                        $("<td>").html(comment.postId),
-                                        $("<td>").html(comment.body)])
-                                        let td = $("<td>");
-                                        editButton(td,"/comments",comment)
-                                        deleteButton(td,"/comments",comment)
-                                        tr.append(td);
-                                        tablePlaceHolder.append(tr);
-                              })
-                 }
+                        break;
+                        case "/comments":  
+                                response.forEach(comment=>{
+                                render.comments(comment,tablePlaceHolder)
+                        })
+                        break
+                        case "/categories": 
+                                response.forEach(categorie=>{
+                                render.categories(categorie,tablePlaceHolder)
+                        })
+                }
          })
+}
+function addActionButtons(tr,td,dir,tbody,obj)
+{
+        addEditButtonToTable(td,dir,obj);
+        addDeleteButtonToTable(td,dir,obj);
+        tr.append(td);
+        tbody.append(tr);
 }
 callRender();
  function findTable(Class)
 {
         return $(`.${Class} tbody`);
 }
-// axios.post(rootUrl+"/users",{
-//         name:"Dummy",
-//         userName:"Dummy"
-// })

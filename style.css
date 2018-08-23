@@ -1,15 +1,12 @@
 *{
- font-family: Poppins;
+        font-family: 'Merriweather', serif;
 }
-thead :nth-child(1){
+.myNav h4{
         color: white;
-}
-thead :not(:first-child)
-{
-        color: black;
-}
-h4{
         pointer-events: none;
+}
+table.table thead{
+        color: white;
 }
 .myBtn{
         text-decoration: none;
@@ -37,16 +34,13 @@ h4{
         background-color: white;
         color: black;
 }
-tbody :nth-child(4):not(){
-        opacity: 0;
-}
 .custom{
-        background: linear-gradient(to right,#292d3e,#ccccb3)
+       background-color: #292d3e
 }
 div.myNav{
         
         background-image: url("https://unsplash.com/photos/XQKd1UN7gUU") no-repeat cover;
-        background:linear-gradient(to left,#292d3e,#ccccb3)
+        background-color: #292d3e;
 }
 nav.myNav{
         background:#292d3e
@@ -75,7 +69,7 @@ nav.myNav{
         }
 }
 #new-post{
-        background:linear-gradient(#292d3e,#ccccb3);
+   background-color: #292d3e;
         color: white;
 }
 #new-post:hover{
@@ -92,33 +86,27 @@ nav.myNav{
 }
 div.card{
         box-shadow: 0 3px 8px #000;
+        border-right: 9px solid #292d3e
 }
 
 div.card-header{
         color:white;
-        background:linear-gradient(-45deg,#292d3e,#ccccb3)
-}
-.xx:hover .card-header{
-          background: linear-gradient(45deg,#292d3e,#ccccb3)
-}
-.border-bottom{
-        border-right: 9px solid #292d3e;
-        border-left: 9px solid #fff;
-        /* box-shadow: 0 4px 1px #ccccb3; */
+        background-color: #292d3e;
+        opacity: 0.7;
 }
 span{
-display: none;
+    border-bottom: 1px solid #292d3e
 }
-#usersList{
+#usersList,#postsList{
         display: none;
+}
+div.ll{
+        border-left: 3px solid #292d3e
 }
 ul.ul{
         list-style: none;
 }
-.xx:hover .border-bottom{
-        border-right-color: #fff;
-        border-left: 9px solid #292d3e;
-}
+
 form >input,form>textarea{
        margin-top: 10px; 
        box-shadow: none;
