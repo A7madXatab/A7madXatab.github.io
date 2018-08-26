@@ -1,52 +1,111 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "test1",
-      "body": "lorem ipsum",
-      "userId": 1,
-      "owner": "typicode",
-      "category": "Uncatagorized"
+      "title": "Ciri Where Are You",
+      "body": "ciri where are you ive been looking in realms in this land and i cant find where are you, you are a queen that always in other castle",
+      "owner": "Geralt Of Rivia",
+      "userId": 2,
+      "category": "Uncatagorized",
+      "categoryId": 1,
+      "id": 1
     },
     {
-      "title": "test 9",
-      "body": "sajdbsa[odci",
-      "owner": "AhmadGhost",
-      "userId": 2,
-      "id": 2,
-      "category": "test",
-      "name": "test 4",
-      "email": "AhmadGhost"
+      "title": "Cut toxic people",
+      "body": "putting tape on my webcam thinking how the FBI agent watched me cry everyday for a year and didn't once check up on me ",
+      "owner": "GloverDonald",
+      "userId": 3,
+      "category": "Political",
+      "categoryId": 2,
+      "id": 2
+    },
+    {
+      "title": "peter parker ",
+      "body": "peter parker in the 2002 movie is fuckin.... incredible. he gets bitten\nby a fuckin jacked red blue spider and he doesnt say “hey someone\n\nshould take me to the hospital mayhaps?” he just goes home. then\nthe bite swells to the size of a fuckin jawbreaker but he’s like “nah i\njust need a nap.” then he wakes up the next day and discovers that\nhe DOESN’T NEED HIS GLASSES ANYMORE and he has a fuckin\nsix pack. does he flip his entire Fuck? no. he says, “cool.” iconic.",
+      "owner": "Iron Man",
+      "userId": 5,
+      "category": "Uncatagorized",
+      "categoryId": 1,
+      "id": 3
     }
   ],
   "comments": [
     {
-      "id": 1,
-      "body": "some commentttt",
-      "title": "Some title",
+      "body": "ive been in other world one of them where very different than our world ",
+      "owner": "Ciri",
+      "title": "ive been traveling through time with Avallac'h",
       "postId": "1",
-      "owner": "typicode",
-      "userId": 1
+      "userId": 4,
+      "id": 1
+    },
+    {
+      "body": "2002 peter parker had no health insurance",
+      "owner": "AhmadGhost",
+      "title": "really ",
+      "postId": "3",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "body": "ajskn saci",
+      "owner": "Ciri",
+      "title": "test",
+      "postId": "3",
+      "userId": 4,
+      "id": 3
+    },
+    {
+      "body": "ajskn saci",
+      "owner": "Ciri",
+      "title": "test",
+      "postId": "2",
+      "userId": 4,
+      "id": 4
+    },
+    {
+      "body": "aslkcnsaoci sc saopic",
+      "owner": "Geralt Of Rivia",
+      "title": "new comment",
+      "postId": "1",
+      "userId": 2,
+      "id": 5
     }
   ],
   "users": [
     {
-      "id": 1,
-      "name": "typicode",
-      "email": "user@example.com",
-      "userName": "undefined"
+      "name": "Ahmad Khatab",
+      "email": "ahmadzendane725@gmail.com",
+      "userName": "AhmadGhost",
+      "id": 1
     },
     {
-      "name": "AhmadXatab",
-      "email": "ahmadzendane725@gmail.com",
-      "userName": "AhmadGhost1111",
+      "name": "The Witcher",
+      "email": "ahmadkhatab017@mail.com",
+      "userName": "Geralt Of Rivia",
       "id": 2
     },
     {
-      "name": "Ciri",
+      "name": "Donald Glover",
       "email": "ahmadkhatab017@mail.com",
-      "userName": "Geralt",
+      "userName": "GloverDonald",
       "id": 3
+    },
+    {
+      "name": "Crilla",
+      "email": "ahmadkhatab017@mail.com",
+      "userName": "Ciri",
+      "id": 4
+    },
+    {
+      "name": "Tony Stark",
+      "email": "ahmadkhatab017@mail.com",
+      "userName": "Iron Man",
+      "id": 5
+    },
+    {
+      "name": "Peter Parker",
+      "email": "ahmadkhatab017@mail.com",
+      "userName": "Spider Man",
+      "id": 6
     }
   ],
   "categories": [
@@ -55,8 +114,16 @@
       "name": "Uncatagorized"
     },
     {
-      "name": "saazs",
+      "name": "Political",
+      "id": 2
+    },
+    {
+      "name": "dark",
       "id": 3
+    },
+    {
+      "name": "Quotes and Sayings",
+      "id": 4
     }
   ]
 }

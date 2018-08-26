@@ -15,65 +15,87 @@ table.table thead{
 }
 .myBtn.active{
         background-color: #fff;
+        position: relative;
+        top: 15px;
         color: #000;
-}
-.myBtn.myBtn.active:hover{
-        background-color: #292d3e;
-        color: black;
 }
 .delBtn{
         background-color: darkred;
         color: white;
 }
+.delBtn:hover{
+        background-color: orangered;
+}
 .editBtn{
-        background-color:#52597a;
+        background-color:#292d3e;
         color: white;
-        transition: all 0.6s ease;
 }
 .editBtn:hover{
-        background-color: white;
-        color: black;
+        background:linear-gradient(to left,#292d3e,#52597a);
+        color: white;
+}
+#clear{
+        color: white;
 }
 .custom{
-       background-color: #292d3e
+       background-color: #24292e;
 }
 div.myNav{
-        
-        background-image: url("https://unsplash.com/photos/XQKd1UN7gUU") no-repeat cover;
-        background-color: #292d3e;
+        background-color: #24292e;
 }
 nav.myNav{
-        background:#292d3e
+        background:#24292e;
+}
+.commentsDiv{
+        background-color: lightgray;
+        border-radius: 5px;
+        border-bottom: 3px solid #24292e;
+        color: black;
+        opacity: 1;
 }
 .myNav:hover .myBtn:hover{
         color: rgb(43, 42, 42);
-        animation: test1 300ms ease-in-out 200ms 1 normal forwards;
+        animation: buttons 300ms ease-in-out 200ms 1 normal forwards;
 }
-.myNav:hover .myBtn:not(:hover){
-        animation: test 300ms ease-in-out 100ms 1 normal forwards;
+.myNav:hover .myBtn.active:hover{
+        animation: activeButton 300ms ease-in-out 500ms 1 normal forwards;
 }
-@keyframes test{
-        100%{
-                opacity: 0;
-        }
-}
-@keyframes test1{
-        50%{
-                border-color: white;
+@keyframes activeButton{
+        25%{
+                background-color: #24292e;
+                color: black;
+                border-color: #24292e;
+                top: 8px;
         }
         100%{
-                border-color: white;
+                background-color: #24292e;
+                color: black;
+                top: 8px;
+                border-color: #24292e;
                 color: white;
                 text-decoration: underline;
                 text-decoration-color: white;
         }
 }
+@keyframes buttons{
+        25%{
+                background-color:white;
+                color: black;
+                top: 15px;
+        }
+        100%{
+                position: relative;
+                top: 15px;
+                background-color: white;
+                color: black;
+        }
+}
 #new-post{
-   background-color: #292d3e;
+   background-color: #24292e;
         color: white;
 }
 #new-post:hover{
-        background:linear-gradient(to top,#292d3e,#ccccb3);
+        background-color: white;
         color: black;
 }
 #post-form{
@@ -88,11 +110,9 @@ div.card{
         box-shadow: 0 3px 8px #000;
         border-right: 9px solid #292d3e
 }
-
 div.card-header{
         color:white;
-        background-color: #292d3e;
-        opacity: 0.7;
+        background-color: #24292e;
 }
 span{
     border-bottom: 1px solid #292d3e
@@ -103,32 +123,37 @@ span{
 div.ll{
         border-left: 3px solid #292d3e
 }
-ul.ul{
-        list-style: none;
-}
-
 form >input,form>textarea{
        margin-top: 10px; 
        box-shadow: none;
        border-radius: 8px;
 }
-
 #clear{
         background-color: 
         #52597a;
 }
-#new-post:focus,.form-control:focus{
-        outline:none;
-        box-shadow: none;
-}
-@media screen and (max-width:700px)
+@media screen and (max-width:768px)
 {
         #postButton{
                 margin-left:100px;
         }
+        div.holder{
+                position: absolute;
+                top: 10%;
+                left: 70%;
+        }
 }
 @media screen and (max-width:500px)
 {
+
+        .myBtn.active,.myNav:hover .myBtn:hover,.myNav:hover .myBtn.active:hover{
+                background-color: #fff;
+                position: relative;
+                color: #000;
+        }
+        .btn.myBtn{
+                 font-size: 10px;
+        }
         #postButton{
                 margin-left:50px;
         }
@@ -143,11 +168,48 @@ form >input,form>textarea{
 
 ul.list-group-flush{
         list-style: none;
-     border: 2px solid #ccccb3
+     border: 2px solid #ccccb3;
 }
 .commentsColor{
         background-color: #6b6b47;
 }
 .hidden{
         display: none;
+}
+a.customLink{
+        color:black;
+      text-decoration: underline;
+      text-decoration-color: #000;
+        transition: all 400ms ease 200ms;
+}
+a.customLink:hover{
+        text-decoration: none;
+        color:#52597a;
+}
+div.postDiv h5{
+  font-family: Poppins;
+  color: #292d3e;
+}
+div.postDiv{
+        margin-top: 10px;
+        background-color: #24292e;
+        color: white;
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+}
+p.marginSetter{
+        margin-left: 10px;
+}
+button#comments{
+      background-color: #52597a;
+      color: white;
+}
+button#comments:hover{
+        border-color: white;
+}
+button.myEdit{
+        border-top-right-radius: 50px;
+}
+button.myDel{
+        border-top-left-radius: 50px;
 }
