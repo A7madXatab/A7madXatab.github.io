@@ -30,10 +30,20 @@
        </div>
        <div class="row">
         <div class="col-lg-4 col-md-8 posts-form " id="post-form" >
-        <form class="form-group col-lg-12 py-1 col-md-12" id="postsForm">
+                <form class="form-group col-lg-12 py-1 col-md-8 hidden" id="commentsForm">
+                        <input type="text" placeholder="Title" class="form-control commentTitle" id="title">
+                        <input type="text" placeholder="Post ID" class="form-control postId" id="title">
+                        <input type="text" placeholder="UserName" class="form-control" id="owner-of-comment">
+                        <textarea id="body commentBody" class="form-control" style="resize: none"></textarea>
+                        <button type="button" class="btn btn-info mt-2 mr-1" id="postComment">Post</button>
+                        <button type="button" class="btn btn-warning mt-2 mr-1" id="cancelButton">Cancel</button>
+                        <button type="reset" class="btn btn-reset mt-2" id="clear">Clear</button>
+                    </form>
+        <form class="form-group col-lg-12 py-1 col-md-8 hidden" id="postsForm">
              <input type="text" placeholder="Title" class="form-control" id="title">
              <!-- <span> Please Notice that if the user dosent excist the post will not be posted</span> -->
              <input type="text" placeholder="UserName" class="form-control" id="owner-of-post">
+             <input type="text" placeholder="Category" class="form-control" id="category">
              <textarea id="body" class="form-control" style="resize: none" placeholder="What Do You Want to Say?"></textarea>
              <button type="button" class="btn btn-info mt-2 mr-1" id="postButton">Post</button>
              <button type="button" class="btn btn-warning mt-2 mr-1" id="cancelButton">Cancel</button>
@@ -48,7 +58,7 @@
            </div>
          </div>
       <div class="row">
-          <div class="col-lg-8" id="posts">
+          <div class="col-lg-8 col-md-12 col-sm-12" id="posts">
             
           </div>
     </div>

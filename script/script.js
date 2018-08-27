@@ -73,7 +73,7 @@ let updaterObject = new Updater();
                 $(".form-control").val("")
         })
         $("#cancelButton").on("click",()=>{
-                $("#post-form").hide();
+                $("#post-form,#cc,#usersList").hide();
         })
         $("#comments").on("click",()=>{
         $(".c").addClass("card").toggle();
@@ -95,10 +95,16 @@ $("#createUser").on("click",()=>{
                  userName:$("#userName").val()
          }
         databaseConnector("POST","/users",obj);
+        setInterval(() =>{
+                reloadPage();
+        },300)
 })
 $("#postCatigorey").on("click",()=>{
         let categorieName = $(".catigoreyTitle").val();
         databaseConnector("POST","/categories",{name:categorieName});
+        setInterval(() =>{
+                reloadPage();
+        },300)
 })
 $("#postButton").on("click",()=>{
         let ownerOfPost = $("#owner-of-post").val();
@@ -132,6 +138,9 @@ function findCategoryId(postObject)
                          {
                                  postObject.categoryId = category.id;
                                  databaseConnector("POST","/posts",postObject)
+                                 setInterval(() =>{
+                                        reloadPage();
+                                },300)
                          }
                  })
          })
@@ -148,6 +157,9 @@ function findUserId(obj,owner,dir)
                              {
                                      obj.userId = userObject.id;
                                      databaseConnector("POST","/comments",obj);
+                                     setInterval(() =>{
+                                        reloadPage();
+                                },300)
                              }
                              if(dir === "/posts") // it is a post object
                              {
@@ -252,7 +264,10 @@ function addDeleteButtonToTable(td,directory,obj) //this function takes an table
         let delBtn =  $("<button>").addClass("btn delBtn mx-1 my-1 fas fa-trash-alt").html("  Delete");
         delBtn.on("click",()=>{
                 databaseConnector("DELETE",directory,obj) // here we are passing a reference to the object that will 
-                callRender();//be linked with this delete button
+               //be linked with this delete button
+              setInterval(() =>{
+                      reloadPage();
+              },300)
         })
         td.append(delBtn);
 }
@@ -306,14 +321,10 @@ function addEditButtonToTable(td,directory,obj)// adding a edit button to a tabl
              saveButton.on("click",()=>{
                 callUpdater(directory,obj,inputsArray) // an updater function that will call the updater class to 
                                                     //update the object 
-                        saveButton.remove();
-                        $("input,textarea").val("");
-                        $("#post-form").hide();
-                        $("#cc").hide();
-                         $("#usersList").hide();
-                        $("button").attr("disabled",false).css({filter:"blur(0px)"}) // removing the disables state of the buttons after saving
-                        editBtn.show();
-                        callRender();
+                        saveButton.remove(); 
+                        setInterval(() =>{
+                                reloadPage();
+                        },300)
                      })
                })
                td.append(editBtn)        
@@ -399,7 +410,7 @@ function updateCommentsRelatedToUser(userObject)
          })
 }
 function reloadPage(){ // just a function that will reload the page when called
-        Window.location.reload();
+        location.reload();
 }
 function callRender() // caller function that calls the getData function
 {

@@ -1,15 +1,6 @@
 {
   "posts": [
     {
-      "title": "Ciri Where Are You",
-      "body": "ciri where are you ive been looking in realms in this land and i cant find where are you, you are a queen that always in other castle",
-      "owner": "Geralt Of Rivia",
-      "userId": 2,
-      "category": "Uncatagorized",
-      "categoryId": 1,
-      "id": 1
-    },
-    {
       "title": "Cut toxic people",
       "body": "putting tape on my webcam thinking how the FBI agent watched me cry everyday for a year and didn't once check up on me ",
       "owner": "GloverDonald",
@@ -26,17 +17,18 @@
       "category": "Uncatagorized",
       "categoryId": 1,
       "id": 3
+    },
+    {
+      "title": "wydgwdu",
+      "body": "asochjbnscoh",
+      "owner": "AhmadGhost",
+      "userId": 1,
+      "category": "Political",
+      "categoryId": 2,
+      "id": 4
     }
   ],
   "comments": [
-    {
-      "body": "ive been in other world one of them where very different than our world ",
-      "owner": "Ciri",
-      "title": "ive been traveling through time with Avallac'h",
-      "postId": "1",
-      "userId": 4,
-      "id": 1
-    },
     {
       "body": "2002 peter parker had no health insurance",
       "owner": "AhmadGhost",
@@ -60,14 +52,6 @@
       "postId": "2",
       "userId": 4,
       "id": 4
-    },
-    {
-      "body": "aslkcnsaoci sc saopic",
-      "owner": "Geralt Of Rivia",
-      "title": "new comment",
-      "postId": "1",
-      "userId": 2,
-      "id": 5
     }
   ],
   "users": [

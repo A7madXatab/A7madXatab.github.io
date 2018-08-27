@@ -1,6 +1,16 @@
 let rootUrl = "http://localhost:3000"
+let i=0;
 $("#new-post").on("click",() => {
     $("#post-form").toggle();
+     $("#commentsForm").addClass("hidden")
+    $("#postsForm").removeClass("hidden")
+})
+$("#clearButton").on("click",() => {
+    $("input,textarea").val("");
+})
+$("#cancelButton").on("click",() => {
+    $("#clearButton").click();
+    $("#post-form").toggle()
 })
 function fetchDataToWorkWith(dir)
 {
@@ -39,17 +49,16 @@ function renderElements(categoreyName)
                      let postdiv = $("<div>").addClass("col-lg-12 col-md-6 col-sm-12 postDiv")
                      postdiv.append(templateBuilder(post))
                      let actionsDiv = $("<div>");
-                     addCommentButtonToPost(actionsDiv);
-                    //  addDeleteButtonToPost(post,actionsDiv);
                     let delButton = $("<button>").addClass("btn delBtn myDel my-1").html("Delete");
                     delButton.on("click",() => {
-                        console.log(post);
+                        axios.delete(rootUrl+"/posts/"+post.id);
                     })
                     actionsDiv.append(delButton);
-                     addEditButtonToPost(actionsDiv)
+                    addCommentButtonToPost(actionsDiv);
+                    addEditButtonToPost(actionsDiv)
                      postdiv.append(actionsDiv);
-                     plaveHolder.append(postdiv)            
-                     appendRelatedCommentToPost(postdiv,post,post.id);
+                     plaveHolder.append(postdiv)
+                     appendRelatedCommentToPost(postdiv,post.id);
                      posts.html(plaveHolder)
                   }
               })
@@ -66,13 +75,40 @@ function addCommentButtonToPost(postDiv)
     let commentButton = $("<button>").addClass("text-center btn").attr("id","comments").html("Add A Comment");
     commentButton.on("click",()=>{
         $("#post-form,#commentsForm").toggle();
-        $("button").not("#cancelButton").attr("disabled","disabled").css({filter:"blur(3px)"});
-         
-         addSave();
-
+        $("#postsForm").addClass("hidden")
+        $("#postComment").on("click",() =>{
+            let commentOwner = $("#owner-of-comment").val();
+            let commentObj = {
+                 body:$("textarea").val(),
+                 owner:commentOwner,
+                 title: $(".commentTitle").val(),
+                 postId: $(".postId").val(),
+                 userId:""
+            }
+             findUserId(commentObj,commentOwner,"/comments");
+             $("#post-form").toggle();
+             $("#commentsForm").addClass("hidden");
+             $("input,textarea").val("");
+        })
     })
     postDiv.append(commentButton);
 }
+function findUserId(obj,owner)
+{
+        fetchDataToWorkWith("/users")
+         .then(response => {
+             response.forEach(user => {
+                 if(user.userName === owner)
+                  {
+                      obj.userId = user.id;
+                      axios.post(rootUrl+"/comments",obj);
+                      renderEveryElement();
+                  }
+             })
+         })
+                 
+                
+  }
 function renderEveryElement()
 {
     let posts = $("#posts");
@@ -88,11 +124,11 @@ function renderEveryElement()
                         axios.delete(rootUrl+"/posts/"+post.id);
                     })
                     actionsDiv.append(delButton);
+             appendRelatedCommentToPost(postdiv,post.id);
              addCommentButtonToPost(actionsDiv);
              addEditButtonToPost(actionsDiv,post)
              postdiv.append(actionsDiv)
              plaveHolder.append(postdiv)            
-             appendRelatedCommentToPost(postdiv,post.id);
             posts.html(plaveHolder)
          })
      })
@@ -108,7 +144,7 @@ function appendRelatedCommentToPost(postDiv,postId)
                  let div = $("<div>").html(
                      `<p class=marginSetter>${comment.title} <br> 
                       @${comment.owner} <br> ${comment.body} </p>`
-                 ).addClass("commentsDiv my-1")
+                 ).addClass(`commentsDiv my-1`);
                  postDiv.append(div);
               }
           })
